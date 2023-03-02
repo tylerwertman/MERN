@@ -1,23 +1,3 @@
-// const beatles = ['Paul', 'George', 'John', 'Ringo'];
-// function printNames(names) {
-//     function actuallyPrintingNames() {
-//         let index = 0;
-//         let name;
-//         for (index; index < names.length; index++) {
-//           name = names[index];
-//           console.log(name + ' was found at index ' + index);
-//         }
-//         console.log('name and index after loop is ' + name + ':' + index);
-//       }
-
-
-//   actuallyPrintingNames();
-// }
-// printNames(beatles);
-
-
-
-
 function tossCoin() {
   return Math.random() > 0.5 ? "heads" : "tails";
 }
