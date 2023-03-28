@@ -7,40 +7,34 @@ class User {
     makeDeposit(amount){
         this.accountBalance += amount;
         console.log(`${this.name} deposited ${amount} schmekels`)
+        return this
     }
     makeWithdrawal(amount){
         this.accountBalance -= amount;
         console.log(`${this.name} withdrew ${amount} schmekels`)
+        return this
     }
     displayBalance(){
         console.log(`${this.name}'s balance is ${this.accountBalance} schmekels`)
+        return this
     }
     transferMoney(amount, user){
         this.accountBalance-=amount;
         user.accountBalance+=amount
         console.log(`${this.name} transfered ${amount} schmekels to ${user.name}. ${this.name}'s balance is now ${this.accountBalance} and ${user.name}'s balance is now ${user.accountBalance}`)
+        return this
     }
 }
 
 const rick = new User("Rick Van Python", "rick@python.com");
 const morty = new User("Morty Smith", "morty@python.com");
 const summer = new User("Summer Smith", "summer@python.com");
-rick.makeDeposit(100)
-rick.makeDeposit(350)
-rick.makeWithdrawal(5)
-rick.displayBalance()
 
-morty.makeDeposit(10)
-morty.makeDeposit(35)
-morty.makeWithdrawal(20)
-morty.makeWithdrawal(15)
-morty.displayBalance()
+rick.makeDeposit(100).makeDeposit(350).makeWithdrawal(5).displayBalance()
 
-summer.makeDeposit(400)
-summer.makeWithdrawal(200)
-summer.makeWithdrawal(10)
-summer.makeWithdrawal(20)
-summer.displayBalance()
+morty.makeDeposit(10).makeDeposit(35).makeWithdrawal(20).makeWithdrawal(15).displayBalance()
+
+summer.makeDeposit(400).makeWithdrawal(200).makeWithdrawal(10).makeWithdrawal(20).displayBalance()
 // console.log(rick);	// output: Rick Van Python
 // console.log(morty);	// output: Morty Smith
 
