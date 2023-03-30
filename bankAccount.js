@@ -1,41 +1,33 @@
-class User {
-    constructor(name, email){
-        this.name = name;
-        this.email = email;
-        this.accountBalance = 0;
+class BankAccount {
+    constructor(intRate, balance, acctName) { // don't forget to add some default values for these parameters!
+        // your code here! (remember, this is where we specify the attributes for our class)
+        // don't worry about user info here; we'll involve the User class soon
+        this.intRate=intRate
+        this.balance=balance
+        this.acctName=acctName
     }
-    makeDeposit(amount){
-        this.accountBalance += amount;
-        console.log(`${this.name} deposited ${amount} schmekels`)
+    deposit(amount) {
+        this.balance += amount;
+        console.log(`${this.acctName} deposited $${amount}`)
         return this
     }
-    makeWithdrawal(amount){
-        this.accountBalance -= amount;
-        console.log(`${this.name} withdrew ${amount} schmekels`)
+    withdraw(amount) {
+        this.balance -= amount;
+        console.log(`${this.acctName} withdrew $${amount}`)
         return this
     }
-    displayBalance(){
-        console.log(`${this.name}'s balance is ${this.accountBalance} schmekels`)
+    displayAccountInfo() {
+        console.log(`${this.acctName}'s balance is $${this.balance}`)
         return this
     }
-    transferMoney(amount, user){
-        this.accountBalance-=amount;
-        user.accountBalance+=amount
-        console.log(`${this.name} transfered ${amount} schmekels to ${user.name}. ${this.name}'s balance is now ${this.accountBalance} and ${user.name}'s balance is now ${user.accountBalance}`)
+    yieldInterest() {
+        console.log(`${this.acctName}'s yield interest is $${this.balance*this.intRate+this.balance}`)
         return this
     }
 }
+const checking = new BankAccount(.02, 0, "checking");
+const savings = new BankAccount(.05, 0, "savings");
 
-const rick = new User("Rick Van Python", "rick@python.com");
-const morty = new User("Morty Smith", "morty@python.com");
-const summer = new User("Summer Smith", "summer@python.com");
-
-rick.makeDeposit(100).makeDeposit(350).makeWithdrawal(5).displayBalance()
-
-morty.makeDeposit(10).makeDeposit(35).makeWithdrawal(20).makeWithdrawal(15).displayBalance()
-
-summer.makeDeposit(400).makeWithdrawal(200).makeWithdrawal(10).makeWithdrawal(20).displayBalance()
-// console.log(rick);	// output: Rick Van Python
-// console.log(morty);	// output: Morty Smith
-
-summer.transferMoney(999, rick)
+checking.deposit(20).deposit(50).deposit(100).yieldInterest()
+savings.deposit(2000).deposit(5000).withdraw(100).withdraw(500).withdraw(200).withdraw(100).yieldInterest()
+// checking.yieldInterest()
